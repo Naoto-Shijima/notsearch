@@ -1,0 +1,49 @@
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
+<meta name="viewport" content="width = device-width, initial-scale = 1, user-scalable = no">
+<title>すっきり検索</title>
+<header>
+    <h2>すっきり検索</h2>
+</header>
+</head>
+<body>
+<main>
+    <p><a href="https://fukuyuki.github.io/mtm.html">こちらのサイト</a>のリスペクトです。</p>
+    <p>除外検索を利用して、不要なサイトを検索結果から取り除く検索サイトです。</p>
+    <label><strong>検索したいワード</strong></label>
+    <input type=text id="q" value="" placeholder="検索ワードを入力">
+    <p>
+        <label><strong>不要サイト</strong></label>
+        <form name="form1">
+            <label><input type="checkbox" name="minusword" value="-税込+-商品+-送料+-ストア+-store+-通販+-ふるさと納税+-お礼の品+-手数料+">通販サイト・オンラインショップ・ふるさと納税など</label>
+            <label><input type="checkbox" name="minusword" value="-求人+-アルバイト+">求人・アルバイトなど</label>
+            <label><input type="checkbox" name="minusword" value="-いかがでしたか+-まとめ+">キュレーションサイト・まとめサイト</label>
+            <label><input type="checkbox" name="minusword" value="-site:twitter.com+">Twitter</label>
+            <label><input type="checkbox" name="minusword" value="-site:instagram.com+">Instagram</label>
+        </form>
+     </p>
+    <input type="button" value="click" onclick="clickBtn1()" />
+
+</main>
+</body>
+<footer>
+  <p>連絡・要望はこちらにDMください：<a href="https://twitter.com/shijimams">@shjimams</a></p>
+</footer>
+
+<script>
+  function clickBtn1() {
+    const arr = [];
+    const minusword = document.form1.minusword;
+    arr.push("https://www.google.com/search?q=");
+
+    for (let i = 0; i < minusword.length; i++) {
+      if (minusword[i].checked) {
+        arr.push(minusword[i].value);
+      }
+    }
+    arr.push(document.getElementById('q').value);
+    location.href = arr.join('');
+  }
+</script>
